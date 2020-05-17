@@ -115,6 +115,5 @@ if __name__=='__main__':
     result_df.write.csv(sys.argv[1])
     
     starttime = datetime.now()
-    run_spark(str(p.output_path))
     elapsed = datetime.now() - starttime
     print("Done, Elapsed: {} (secs)".format(elapsed.total_seconds()))
