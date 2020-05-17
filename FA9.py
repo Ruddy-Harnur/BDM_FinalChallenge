@@ -1,6 +1,6 @@
 import sys
 from pyspark import SparkContext
-from pyspark.sql.session import SparkSession
+from pyspark.sql import SparkSession
 
 import pyspark.sql.functions as f 
 from datetime import datetime
