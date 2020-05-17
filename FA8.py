@@ -116,4 +116,4 @@ if __name__=='__main__':
     
     starttime = datetime.now()
     elapsed = datetime.now() - starttime
-    print("Done, Elapsed: {} (min)".format(elapsed.total_minutes()))
+    print("Total Time Elapsed: {}".format(elapsed))
