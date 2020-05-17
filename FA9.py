@@ -106,10 +106,10 @@ if __name__=='__main__':
     #create a df that joins violations with centerlines
     #exact match on both borocode and street name/label (no more or condition needed as there's only one column)
     #%2 condition is to check the remainder, if the remainder isn't 0, compare HN against the odds, if remainder is 0, compare against the evens
-    result_df = centerline.join(broadcast(pv),((pv["BOROCODE"]==centerline["BOROCODE"]) & 
+    result_df = pv.join(broadcast(centerline),((pv["BOROCODE"]==centerline["BOROCODE"]) & 
                           ((pv["street name"] == centerline['ST_LABEL'])) &
                           (((pv['HN_int']%2!=0) & (pv['HN_int'] >= centerline['L_LOW_int']) & (pv['HN_int'] <= centerline['L_HIGH_int'])) |
-                          ((pv['HN_int']%2==0) & (pv['HN_int'] >= centerline['R_LOW_int']) & (pv['HN_int'] <= centerline['R_HIGH_int'])))), how='left')
+                          ((pv['HN_int']%2==0) & (pv['HN_int'] >= centerline['R_LOW_int']) & (pv['HN_int'] <= centerline['R_HIGH_int'])))), how='right')
     
     #select only the cols we need, order by phys id, group by physid, and sum the counts for the respective years
     result_df = result_df.select('PHYSICALID', '2015', '2016', '2017', '2018', '2019')
